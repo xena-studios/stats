@@ -7,22 +7,12 @@ import react from "@vitejs/plugin-react";
 import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+import { reflectPolyfillPlugin } from "./src/lib/reflect-polyfills";
 
 const config = defineConfig({
 	plugins: [
 		devtools(),
-		nitro({
-			// Fixes issue with Nitro not bundling reflect-metadata which is required by better-auth/passkey.
-			rollupConfig: {
-				plugins: [
-					{
-						name: "inject-reflect-metadata",
-						banner: () => `import "reflect-metadata";`,
-					},
-				],
-			},
-			noExternals: ["reflect-metadata"],
-		}),
+		nitro(),
 		tailwindcss(),
 		tanstackStart(),
 		tsconfigPaths(),
@@ -31,6 +21,7 @@ const config = defineConfig({
 				plugins: ["babel-plugin-react-compiler"],
 			},
 		}),
+		reflectPolyfillPlugin(),
 	],
 	resolve: {
 		alias: {
