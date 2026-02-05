@@ -11,7 +11,17 @@ import tsconfigPaths from "vite-tsconfig-paths";
 const config = defineConfig({
 	plugins: [
 		devtools(),
-		nitro(),
+		nitro({
+			rollupConfig: {
+				plugins: [
+					// Fixes issue with Nitro not bundling reflect-metadata which is required by better-auth/passkey
+					{
+						name: "inject-reflect-metadata",
+						banner: () => `import "reflect-metadata";`,
+					},
+				],
+			},
+		}),
 		tailwindcss(),
 		tanstackStart(),
 		tsconfigPaths(),
