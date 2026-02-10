@@ -253,49 +253,51 @@ export function Hero() {
             variants={itemVariants}
             className="relative mt-16 md:mt-20"
           >
-            <div className="mx-auto max-w-4xl overflow-hidden rounded-xl border border-primary/20 bg-card/90 shadow-2xl shadow-primary/15 backdrop-blur-sm">
-              {/* Mock browser bar */}
-              <div className="flex items-center gap-2 border-b border-primary/15 px-4 py-3">
-                <div className="flex gap-1.5">
-                  <div className="h-3 w-3 rounded-full bg-red-500/60" />
-                  <div className="h-3 w-3 rounded-full bg-yellow-500/60" />
-                  <div className="h-3 w-3 rounded-full bg-green-500/60" />
+            <div className="relative mx-auto max-w-4xl">
+              <div className="overflow-hidden rounded-xl border border-primary/20 bg-card/90 shadow-[0_20px_45px_-32px_rgba(88,120,232,0.55)] backdrop-blur-sm">
+                {/* Mock browser bar */}
+                <div className="flex items-center gap-2 border-b border-primary/15 px-4 py-3">
+                  <div className="flex gap-1.5">
+                    <div className="h-3 w-3 rounded-full bg-red-500/60" />
+                    <div className="h-3 w-3 rounded-full bg-yellow-500/60" />
+                    <div className="h-3 w-3 rounded-full bg-green-500/60" />
+                  </div>
+                  <div className="mx-auto flex h-7 w-72 items-center justify-center rounded-md border border-primary/10 bg-secondary/70 px-3">
+                    <span className="text-xs text-muted-foreground font-mono">
+                      app.serverstats.io/dashboard
+                    </span>
+                  </div>
                 </div>
-                <div className="mx-auto flex h-7 w-72 items-center justify-center rounded-md border border-primary/10 bg-secondary/70 px-3">
-                  <span className="text-xs text-muted-foreground font-mono">
-                    app.serverstats.io/dashboard
-                  </span>
+                {/* Mock dashboard content */}
+                <div className="p-6 md:p-8">
+                  <div className="grid grid-cols-3 gap-4 mb-6">
+                    <DashboardStat label="Players Online" value="47" change="+12%" />
+                    <DashboardStat label="TPS" value="20.0" change="Stable" />
+                    <DashboardStat label="Uptime" value="99.7%" change="30d" />
+                  </div>
+                  {/* Animated chart bars */}
+                  <div className="h-40 md:h-52 rounded-lg bg-secondary/40 border border-primary/15 flex items-end gap-0.75 p-4">
+                    {[35, 45, 40, 60, 55, 70, 65, 80, 75, 85, 90, 70, 65, 78, 82, 88, 72, 68, 75, 90, 85, 92, 88, 78].map(
+                      (h, i) => (
+                        <motion.div
+                          key={`bar-${i}`}
+                          initial={{ height: 0 }}
+                          animate={shouldMountWaves ? { height: `${h}%` } : { height: 0 }}
+                          transition={{
+                            duration: 0.8,
+                            delay: 1.2 + i * 0.03,
+                            ease: "easeOut",
+                          }}
+                          className="flex-1 rounded-t bg-linear-to-t from-primary/30 to-primary/80 hover:from-primary/45 hover:to-primary transition-colors cursor-default"
+                        />
+                      )
+                    )}
+                  </div>
                 </div>
               </div>
-              {/* Mock dashboard content */}
-              <div className="p-6 md:p-8">
-                <div className="grid grid-cols-3 gap-4 mb-6">
-                  <DashboardStat label="Players Online" value="47" change="+12%" />
-                  <DashboardStat label="TPS" value="20.0" change="Stable" />
-                  <DashboardStat label="Uptime" value="99.7%" change="30d" />
-                </div>
-                {/* Animated chart bars */}
-                <div className="h-40 md:h-52 rounded-lg bg-secondary/40 border border-primary/15 flex items-end gap-0.75 p-4">
-                  {[35, 45, 40, 60, 55, 70, 65, 80, 75, 85, 90, 70, 65, 78, 82, 88, 72, 68, 75, 90, 85, 92, 88, 78].map(
-                    (h, i) => (
-                      <motion.div
-                        key={`bar-${i}`}
-                        initial={{ height: 0 }}
-                        animate={shouldMountWaves ? { height: `${h}%` } : { height: 0 }}
-                        transition={{
-                          duration: 0.8,
-                          delay: 1.2 + i * 0.03,
-                          ease: "easeOut",
-                        }}
-                        className="flex-1 rounded-t bg-linear-to-t from-primary/30 to-primary/80 hover:from-primary/45 hover:to-primary transition-colors cursor-default"
-                      />
-                    )
-                  )}
-                </div>
-              </div>
+              {/* Bottom fade (scoped to preview width) */}
+              <div className="pointer-events-none absolute -bottom-px inset-x-0 h-24 rounded-b-xl bg-linear-to-t from-background via-background/70 to-transparent" />
             </div>
-            {/* Bottom fade */}
-            <div className="absolute -bottom-px left-0 right-0 h-24 bg-linear-to-t from-background to-transparent" />
           </motion.div>
         </motion.div>
       </div>
