@@ -8,6 +8,7 @@ import { FAQ } from "@/components/landing/faq";
 import { CTA } from "@/components/landing/cta";
 import { Footer } from "@/components/landing/footer";
 import { createFileRoute } from "@tanstack/react-router";
+import "./globals.css";
 
 export const Route = createFileRoute("/landing/")({
 	component: RouteComponent,
@@ -15,7 +16,7 @@ export const Route = createFileRoute("/landing/")({
 
 export function RouteComponent() {
   return (
-    <main className="min-h-screen">
+    <main className="landing-theme min-h-screen overflow-x-hidden bg-background text-foreground">
       <Header />
       <Hero />
       <HowItWorks />

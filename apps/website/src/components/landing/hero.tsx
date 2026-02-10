@@ -119,7 +119,7 @@ export function Hero() {
 
       {/* Radial glow overlay */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-primary/[0.04] rounded-full blur-[120px]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[980px] h-[620px] bg-primary/[0.08] rounded-full blur-[120px]" />
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
       </div>
 
@@ -132,7 +132,7 @@ export function Hero() {
         >
           {/* Badge */}
           <motion.div variants={itemVariants} className="flex justify-center mb-8">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/[0.06] px-4 py-1.5 text-sm text-primary backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/[0.09] px-4 py-1.5 text-sm text-primary backdrop-blur-sm">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
@@ -148,7 +148,7 @@ export function Hero() {
           >
             Minecraft Server Analytics
             <br />
-            <span className="bg-gradient-to-r from-primary via-blue-400 to-primary bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#7ca0ff] via-[#6c8ff8] to-[#7397ff] bg-clip-text text-transparent">
               Without the Hassle
             </span>
           </motion.h1>
@@ -169,7 +169,7 @@ export function Hero() {
           >
             <Button
               size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 h-12 text-base gap-2 group shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 h-12 text-base gap-2 group shadow-lg shadow-primary/35 hover:shadow-xl hover:shadow-primary/45 transition-all duration-300"
             >
               Get Started Free
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -177,7 +177,7 @@ export function Hero() {
             <Button
               variant="outline"
               size="lg"
-              className="px-8 h-12 text-base gap-2 border-border/60 text-foreground hover:bg-secondary/50 bg-transparent backdrop-blur-sm"
+              className="px-8 h-12 text-base gap-2 border-primary/20 text-foreground hover:bg-secondary/60 bg-secondary/20 backdrop-blur-sm"
             >
               <BookOpen className="h-4 w-4" />
               View Docs
@@ -227,15 +227,15 @@ export function Hero() {
             variants={itemVariants}
             className="relative mt-16 md:mt-20"
           >
-            <div className="mx-auto max-w-4xl overflow-hidden rounded-xl border border-border/50 bg-card/80 shadow-2xl shadow-primary/5 backdrop-blur-sm">
+            <div className="mx-auto max-w-4xl overflow-hidden rounded-xl border border-primary/20 bg-card/90 shadow-2xl shadow-primary/15 backdrop-blur-sm">
               {/* Mock browser bar */}
-              <div className="flex items-center gap-2 border-b border-border/50 px-4 py-3">
+              <div className="flex items-center gap-2 border-b border-primary/15 px-4 py-3">
                 <div className="flex gap-1.5">
                   <div className="h-3 w-3 rounded-full bg-red-500/60" />
                   <div className="h-3 w-3 rounded-full bg-yellow-500/60" />
                   <div className="h-3 w-3 rounded-full bg-green-500/60" />
                 </div>
-                <div className="mx-auto flex h-7 w-72 items-center justify-center rounded-md bg-secondary/50 px-3">
+                <div className="mx-auto flex h-7 w-72 items-center justify-center rounded-md border border-primary/10 bg-secondary/70 px-3">
                   <span className="text-xs text-muted-foreground font-mono">
                     app.serverstats.io/dashboard
                   </span>
@@ -249,7 +249,7 @@ export function Hero() {
                   <DashboardStat label="Uptime" value="99.7%" change="30d" />
                 </div>
                 {/* Animated chart bars */}
-                <div className="h-40 md:h-52 rounded-lg bg-secondary/30 border border-border/30 flex items-end gap-[3px] p-4">
+                <div className="h-40 md:h-52 rounded-lg bg-secondary/40 border border-primary/15 flex items-end gap-[3px] p-4">
                   {[35, 45, 40, 60, 55, 70, 65, 80, 75, 85, 90, 70, 65, 78, 82, 88, 72, 68, 75, 90, 85, 92, 88, 78].map(
                     (h, i) => (
                       <motion.div
@@ -261,7 +261,7 @@ export function Hero() {
                           delay: 1.2 + i * 0.03,
                           ease: "easeOut",
                         }}
-                        className="flex-1 rounded-t bg-gradient-to-t from-primary/40 to-primary/80 hover:from-primary/60 hover:to-primary transition-colors cursor-default"
+                        className="flex-1 rounded-t bg-gradient-to-t from-primary/30 to-primary/80 hover:from-primary/45 hover:to-primary transition-colors cursor-default"
                       />
                     )
                   )}
@@ -287,7 +287,7 @@ function DashboardStat({
   change: string;
 }) {
   return (
-    <div className="rounded-lg border border-border/30 bg-secondary/20 p-4 backdrop-blur-sm">
+    <div className="rounded-lg border border-primary/15 bg-secondary/35 p-4 backdrop-blur-sm">
       <p className="text-xs text-muted-foreground mb-1">{label}</p>
       <p className="text-xl md:text-2xl font-bold text-foreground">{value}</p>
       <p className="text-xs text-primary mt-1">{change}</p>

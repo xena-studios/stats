@@ -45,14 +45,14 @@ function GlowyConnector({ index }: { index: number }) {
       {/* Track line */}
       <div className="relative w-full h-[2px]">
         {/* Background track */}
-        <div className="absolute inset-0 bg-border/30 rounded-full" />
+        <div className="absolute inset-0 bg-primary/20 rounded-full" />
 
         {/* Animated fill */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
           transition={{ duration: 1, delay: 0.6 + index * 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute inset-0 origin-left rounded-full bg-gradient-to-r from-primary/80 to-primary"
+          className="absolute inset-0 origin-left rounded-full bg-gradient-to-r from-primary/85 to-primary"
         />
 
         {/* Glow effect on the animated fill */}
@@ -60,7 +60,7 @@ function GlowyConnector({ index }: { index: number }) {
           initial={{ scaleX: 0 }}
           animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
           transition={{ duration: 1, delay: 0.6 + index * 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute inset-0 origin-left rounded-full bg-gradient-to-r from-primary/80 to-primary blur-[6px]"
+          className="absolute inset-0 origin-left rounded-full bg-gradient-to-r from-primary/85 to-primary blur-[7px]"
         />
 
         {/* Traveling light dot - repeats */}
@@ -92,7 +92,7 @@ export function HowItWorks() {
   return (
     <section className="py-24 md:py-32 relative">
       {/* Subtle section divider glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-primary/35 to-transparent" />
 
       <div className="mx-auto max-w-6xl px-6">
         <AnimatedSection className="text-center mb-16">
@@ -152,7 +152,7 @@ export function HowItWorks() {
                       delay: 0.3 + index * 0.2,
                       ease: "easeOut",
                     }}
-                    className="absolute -inset-2 rounded-2xl bg-primary/[0.06] blur-md"
+                    className="absolute -inset-2 rounded-2xl bg-primary/[0.11] blur-md"
                   />
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -164,7 +164,7 @@ export function HowItWorks() {
                       type: "spring",
                       stiffness: 200,
                     }}
-                    className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-card border border-primary/20 text-primary shadow-lg shadow-primary/[0.08] group-hover:border-primary/40 group-hover:shadow-primary/15 transition-all duration-500"
+                    className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-card border border-primary/30 text-primary shadow-lg shadow-primary/[0.18] group-hover:border-primary/50 group-hover:shadow-primary/30 transition-all duration-500"
                   >
                     <step.icon className="h-7 w-7" strokeWidth={1.5} />
                   </motion.div>

@@ -8,7 +8,7 @@ export const Route = createFileRoute("/landing/layout")({
 
 function RouteComponent() {
 	return (
-		<div className="dark font-sans antialiased">
+		<div className="dark landing-theme min-h-screen overflow-x-hidden bg-background font-sans text-foreground antialiased">
 			<Outlet />
 		</div>
 	)

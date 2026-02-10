@@ -72,7 +72,7 @@ export function Pricing() {
 
   return (
     <section id="pricing" className="py-24 md:py-32 relative">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-primary/35 to-transparent" />
 
       <div className="mx-auto max-w-6xl px-6">
         <AnimatedSection className="text-center mb-16">
@@ -122,15 +122,15 @@ export function Pricing() {
               >
                 {/* Popular badge glow */}
                 {plan.popular && (
-                  <div className="absolute -inset-px rounded-2xl bg-gradient-to-b from-primary/20 via-primary/5 to-transparent blur-sm" />
+                  <div className="absolute -inset-px rounded-2xl bg-gradient-to-b from-primary/30 via-primary/10 to-transparent blur-sm" />
                 )}
 
                 <Card
                   className={cn(
                     "relative flex flex-col rounded-2xl border p-6 h-full overflow-hidden transition-all duration-300",
                     plan.popular
-                      ? "border-primary/30 bg-card shadow-xl shadow-primary/[0.06]"
-                      : "border-border/40 bg-card/50 hover:border-border/60"
+                      ? "border-primary/45 bg-card shadow-xl shadow-primary/[0.16]"
+                      : "border-border/40 bg-card/50 hover:border-primary/18"
                   )}
                 >
                   {/* Gradient overlay */}
@@ -166,7 +166,7 @@ export function Pricing() {
                     <div
                       className={cn(
                         "mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-border/40 bg-secondary/40",
-                        plan.popular && "border-primary/20 bg-primary/[0.06]"
+                        plan.popular && "border-primary/35 bg-primary/[0.12]"
                       )}
                     >
                       <Icon className={cn("h-5 w-5", plan.iconColor)} />
@@ -190,7 +190,7 @@ export function Pricing() {
                             className={cn(
                               "mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full",
                               plan.popular
-                                ? "bg-primary/15 text-primary"
+                                ? "bg-primary/25 text-primary"
                                 : "bg-muted text-muted-foreground"
                             )}
                           >
@@ -206,7 +206,7 @@ export function Pricing() {
                       className={cn(
                         "mt-7 w-full h-11 gap-2 group transition-all duration-300",
                         plan.popular
-                          ? "bg-primary text-primary-foreground hover:bg-primary/90 shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30"
+                          ? "bg-primary text-primary-foreground hover:bg-primary/90 shadow-md shadow-primary/35 hover:shadow-lg hover:shadow-primary/45"
                           : "bg-secondary text-foreground hover:bg-secondary/80 border border-border/50"
                       )}
                     >
