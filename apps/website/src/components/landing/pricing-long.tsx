@@ -67,7 +67,47 @@ const plans = [
   },
 ];
 
-export function Pricing() {
+const features = [
+  {
+    category: "Server Monitoring",
+    items: [
+      { name: "Real-time player tracking", free: true, pro: true, enterprise: true },
+      { name: "TPS monitoring", free: true, pro: true, enterprise: true },
+      { name: "Uptime monitoring", free: true, pro: true, enterprise: true },
+      { name: "Advanced session analytics", free: false, pro: true, enterprise: true },
+      { name: "Uptime alerts & notifications", free: false, pro: true, enterprise: true },
+    ],
+  },
+  {
+    category: "Data & History",
+    items: [
+      { name: "7-day data history", free: true, pro: false, enterprise: false },
+      { name: "30-day data history", free: false, pro: true, enterprise: false },
+      { name: "Unlimited data history", free: false, pro: false, enterprise: true },
+      { name: "Data export (CSV)", free: false, pro: true, enterprise: true },
+    ],
+  },
+  {
+    category: "Scale & Integrations",
+    items: [
+      { name: "1 server", free: true, pro: false, enterprise: false },
+      { name: "5 servers", free: false, pro: true, enterprise: false },
+      { name: "Unlimited servers", free: false, pro: false, enterprise: true },
+      { name: "API access", free: false, pro: false, enterprise: true },
+      { name: "Custom integrations", free: false, pro: false, enterprise: true },
+    ],
+  },
+  {
+    category: "Support",
+    items: [
+      { name: "Community support", free: true, pro: true, enterprise: true },
+      { name: "Priority support", free: false, pro: true, enterprise: true },
+      { name: "Dedicated support manager", free: false, pro: false, enterprise: true },
+    ],
+  },
+];
+
+export function PricingLong() {
   const [hoveredPlan, setHoveredPlan] = useState<number | null>(null);
 
   return (
@@ -226,6 +266,108 @@ export function Pricing() {
               </motion.div>
             );
           })}
+        </AnimatedSection>
+
+        {/* Feature Comparison Table */}
+        <AnimatedSection className="mx-auto max-w-5xl">
+          <div className="overflow-x-auto rounded-2xl border border-border/40 bg-card/30 backdrop-blur-sm">
+            <table className="w-full min-w-[600px]">
+              <thead>
+                <tr className="border-b border-border/40">
+                  <th className="text-left p-4 text-sm font-medium text-muted-foreground w-[40%]">
+                    Feature
+                  </th>
+                  <th className="p-4 text-center text-sm font-medium text-muted-foreground w-[20%]">
+                    Free
+                  </th>
+                  <th className="p-4 text-center text-sm font-medium text-primary w-[20%]">
+                    Pro
+                  </th>
+                  <th className="p-4 text-center text-sm font-medium text-amber-500 w-[20%]">
+                    Enterprise
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {features.map((category) => (
+                  <React.Fragment key={category.category}>
+                    <tr>
+                      <td
+                        colSpan={4}
+                        className="px-4 pt-6 pb-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider"
+                      >
+                        {category.category}
+                      </td>
+                    </tr>
+                    {category.items.map((feature, featureIndex) => (
+                      <motion.tr
+                        key={feature.name}
+                        initial={{ opacity: 0, x: -8 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 0.3,
+                          delay: featureIndex * 0.04,
+                        }}
+                        className="border-b border-border/20 last:border-0 hover:bg-secondary/20 transition-colors"
+                      >
+                        <td className="p-4 text-sm text-foreground/80">
+                          {feature.name}
+                        </td>
+                        {(["free", "pro", "enterprise"] as const).map((tier) => (
+                          <td key={tier} className="p-4 text-center">
+                            {feature[tier] ? (
+                              <motion.div
+                                initial={{ scale: 0 }}
+                                whileInView={{ scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{
+                                  type: "spring",
+                                  stiffness: 400,
+                                  damping: 15,
+                                  delay: featureIndex * 0.04 + 0.1,
+                                }}
+                                className={cn(
+                                  "inline-flex h-6 w-6 items-center justify-center rounded-full",
+                                  tier === "pro"
+                                    ? "bg-primary/15 text-primary"
+                                    : tier === "enterprise"
+                                      ? "bg-amber-500/15 text-amber-500"
+                                      : "bg-muted text-muted-foreground"
+                                )}
+                              >
+                                <Check className="h-3.5 w-3.5" strokeWidth={2.5} />
+                              </motion.div>
+                            ) : (
+                              <X className="inline h-4 w-4 text-muted-foreground/30" />
+                            )}
+                          </td>
+                        ))}
+                      </motion.tr>
+                    ))}
+                  </React.Fragment>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Bottom CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-8 flex items-center justify-center gap-4 text-sm text-muted-foreground"
+          >
+            <span>Need a custom plan?</span>
+            <Button
+              variant="outline"
+              size="sm"
+              className="bg-transparent border-border/50 text-foreground hover:bg-secondary/50 gap-1.5"
+            >
+              Contact Sales
+              <span>&rarr;</span>
+            </Button>
+          </motion.div>
         </AnimatedSection>
       </div>
     </section>
