@@ -28,7 +28,7 @@ function ServerLogo({ name }: { name: string }) {
 
 export function ServerShowcase() {
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden">
+    <section className="py-16 md:py-24 relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
       {/* Ambient background orbs */}

@@ -6,12 +6,11 @@ import { ArrowRight } from "lucide-react";
 import {
   AnimatedSection,
   AnimatedItem,
-  AnimatedText,
 } from "./animated-section";
 
 export function CTA() {
   return (
-    <section className="py-24 md:py-32 relative">
+    <section className="py-16 md:py-24 relative">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
       <div className="mx-auto max-w-6xl px-6">
@@ -24,24 +23,8 @@ export function CTA() {
             >
               {/* Animated glows */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <motion.div
-                  animate={{
-                    x: [0, 60, 0],
-                    y: [0, -30, 0],
-                    scale: [1, 1.2, 1],
-                  }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/[0.04] rounded-full blur-[100px]"
-                />
-                <motion.div
-                  animate={{
-                    x: [0, -40, 0],
-                    y: [0, 20, 0],
-                    scale: [1, 0.9, 1],
-                  }}
-                  transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute top-0 right-0 w-[300px] h-[300px] bg-blue-400/[0.03] rounded-full blur-[80px]"
-                />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/[0.04] rounded-full blur-[100px]" />
+                <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-blue-400/[0.03] rounded-full blur-[80px]" />
               </div>
 
               <div className="relative">

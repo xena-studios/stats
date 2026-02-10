@@ -1,12 +1,10 @@
 "use client";
 
-import React from "react"
-
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Check, Crown, Rocket, Sparkles, Star, X } from "lucide-react";
+import { Check, Crown, Rocket, Sparkles, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import {
@@ -73,7 +71,7 @@ export function Pricing() {
   const [hoveredPlan, setHoveredPlan] = useState<number | null>(null);
 
   return (
-    <section id="pricing" className="py-24 md:py-32 relative">
+    <section id="pricing" className="py-16 md:py-24 relative">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-primary/35 to-transparent" />
 
       <div className="mx-auto max-w-6xl px-6">

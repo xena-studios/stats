@@ -66,10 +66,45 @@ export function AnimatedText({
   className?: string;
   as?: "p" | "h1" | "h2" | "h3" | "span" | "div";
 }) {
-  const MotionComponent = motion.create(Component);
+  if (Component === "h1") {
+    return (
+      <motion.h1 variants={itemVariants} className={className}>
+        {children}
+      </motion.h1>
+    );
+  }
+  if (Component === "h2") {
+    return (
+      <motion.h2 variants={itemVariants} className={className}>
+        {children}
+      </motion.h2>
+    );
+  }
+  if (Component === "h3") {
+    return (
+      <motion.h3 variants={itemVariants} className={className}>
+        {children}
+      </motion.h3>
+    );
+  }
+  if (Component === "span") {
+    return (
+      <motion.span variants={itemVariants} className={className}>
+        {children}
+      </motion.span>
+    );
+  }
+  if (Component === "div") {
+    return (
+      <motion.div variants={itemVariants} className={className}>
+        {children}
+      </motion.div>
+    );
+  }
+
   return (
-    <MotionComponent variants={itemVariants} className={className}>
+    <motion.p variants={itemVariants} className={className}>
       {children}
-    </MotionComponent>
+    </motion.p>
   );
 }

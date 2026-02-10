@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
-import { motion, type Variants } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { motion, type Variants, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen } from "lucide-react";
 import { GlowyWaves } from "./glowy-waves";
@@ -112,10 +112,36 @@ function CountUpStat({
 }
 
 export function Hero() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const isInView = useInView(sectionRef, { amount: 0.2 });
+  const [hasScrolled, setHasScrolled] = useState(false);
+  const [shouldMountWaves, setShouldMountWaves] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY > 8) {
+        setHasScrolled(true);
+      }
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (hasScrolled && isInView) {
+      setShouldMountWaves(true);
+    }
+  }, [hasScrolled, isInView]);
+
   return (
-    <section className="relative min-h-[100dvh] flex items-center overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="relative min-h-[100dvh] flex items-center overflow-hidden"
+    >
       {/* Glowy waves canvas background */}
-      <GlowyWaves />
+      {shouldMountWaves && <GlowyWaves />}
 
       {/* Radial glow overlay */}
       <div className="absolute inset-0 pointer-events-none">
@@ -255,7 +281,7 @@ export function Hero() {
                       <motion.div
                         key={`bar-${i}`}
                         initial={{ height: 0 }}
-                        animate={{ height: `${h}%` }}
+                        animate={shouldMountWaves ? { height: `${h}%` } : { height: 0 }}
                         transition={{
                           duration: 0.8,
                           delay: 1.2 + i * 0.03,

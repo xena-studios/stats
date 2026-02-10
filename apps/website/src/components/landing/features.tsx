@@ -48,7 +48,7 @@ const features = [
 
 export function Features() {
   return (
-    <section id="features" className="py-24 md:py-32 relative">
+    <section id="features" className="py-16 md:py-24 relative">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-primary/35 to-transparent" />
 
       {/* Ambient glow */}

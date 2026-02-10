@@ -39,7 +39,7 @@ const footerColumns = [
 export function Footer() {
   return (
     <footer className="border-t border-border/40 bg-card/20">
-      <div className="mx-auto max-w-6xl px-6 py-16">
+      <div className="mx-auto max-w-6xl px-6 py-12">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
