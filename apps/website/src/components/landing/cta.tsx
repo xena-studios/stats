@@ -11,7 +11,7 @@ import {
 export function CTA() {
   return (
     <section className="py-16 md:py-24 relative">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-linear-to-r from-transparent via-border to-transparent" />
 
       <div className="mx-auto max-w-6xl px-6">
         <AnimatedSection>
@@ -23,8 +23,8 @@ export function CTA() {
             >
               {/* Animated glows */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/[0.04] rounded-full blur-[100px]" />
-                <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-blue-400/[0.03] rounded-full blur-[80px]" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-100 bg-primary/4 rounded-full blur-[100px]" />
+                <div className="absolute top-0 right-0 w-75 h-75 bg-blue-400/3 rounded-full blur-[80px]" />
               </div>
 
               <div className="relative">

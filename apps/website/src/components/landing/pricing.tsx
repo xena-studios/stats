@@ -72,7 +72,7 @@ export function Pricing() {
 
   return (
     <section id="pricing" className="py-16 md:py-24 relative">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-primary/35 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-linear-to-r from-transparent via-primary/35 to-transparent" />
 
       <div className="mx-auto max-w-6xl px-6">
         <AnimatedSection className="text-center mb-16">
@@ -122,21 +122,21 @@ export function Pricing() {
               >
                 {/* Popular badge glow */}
                 {plan.popular && (
-                  <div className="absolute -inset-px rounded-2xl bg-gradient-to-b from-primary/30 via-primary/10 to-transparent blur-sm" />
+                  <div className="absolute -inset-px rounded-2xl bg-linear-to-b from-primary/30 via-primary/10 to-transparent blur-sm" />
                 )}
 
                 <Card
                   className={cn(
                     "relative flex flex-col rounded-2xl border p-6 h-full overflow-hidden transition-all duration-300",
                     plan.popular
-                      ? "border-primary/45 bg-card shadow-xl shadow-primary/[0.16]"
+                      ? "border-primary/45 bg-card shadow-xl shadow-primary/16"
                       : "border-border/40 bg-card/50 hover:border-primary/18"
                   )}
                 >
                   {/* Gradient overlay */}
                   <div
                     className={cn(
-                      "absolute inset-0 bg-gradient-to-br opacity-60 pointer-events-none",
+                      "absolute inset-0 bg-linear-to-br opacity-60 pointer-events-none",
                       plan.gradient
                     )}
                   />
@@ -147,7 +147,7 @@ export function Pricing() {
                       initial={{ x: "-100%", opacity: 0 }}
                       animate={{ x: "100%", opacity: 0.07 }}
                       transition={{ duration: 0.6, ease: "easeOut" }}
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground to-transparent pointer-events-none"
+                      className="absolute inset-0 bg-linear-to-r from-transparent via-foreground to-transparent pointer-events-none"
                     />
                   )}
                   {/* Most Popular Badge */}
@@ -157,7 +157,7 @@ export function Pricing() {
                       <div
                         className={cn(
                           "flex h-10 w-10 items-center justify-center rounded-xl border border-border/40 bg-secondary/40",
-                          plan.popular && "border-primary/35 bg-primary/[0.12]"
+                          plan.popular && "border-primary/35 bg-primary/12"
                         )}
                       >
                         <Icon className={cn("h-5 w-5", plan.iconColor)} />

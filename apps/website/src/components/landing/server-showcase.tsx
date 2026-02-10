@@ -20,7 +20,7 @@ const servers = [
 function ServerLogo({ name }: { name: string }) {
   const initial = name.charAt(0);
   return (
-    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-foreground/[0.06] border border-border/30 text-lg font-bold text-foreground/60 select-none">
+    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-foreground/6 border border-border/30 text-lg font-bold text-foreground/60 select-none">
       {initial}
     </div>
   );
@@ -29,12 +29,12 @@ function ServerLogo({ name }: { name: string }) {
 export function ServerShowcase() {
   return (
     <section className="py-16 md:py-24 relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-linear-to-r from-transparent via-border to-transparent" />
 
       {/* Ambient background orbs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/[0.03] rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/[0.02] rounded-full blur-[100px]" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/3 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/2 rounded-full blur-[100px]" />
       </div>
 
       <div className="mx-auto max-w-6xl px-6 relative">
@@ -82,18 +82,18 @@ export function ServerShowcase() {
               transition={{ duration: 0.3, ease: "easeOut" }}
               className="group relative"
             >
-              <div className="relative rounded-2xl border border-border/30 bg-card/40 backdrop-blur-xl p-5 overflow-hidden transition-all duration-300 group-hover:border-border/50 group-hover:shadow-lg group-hover:shadow-primary/[0.04]">
+              <div className="relative rounded-2xl border border-border/30 bg-card/40 backdrop-blur-xl p-5 overflow-hidden transition-all duration-300 group-hover:border-border/50 group-hover:shadow-lg group-hover:shadow-primary/4">
                 {/* Glass gradient */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br ${server.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
+                  className={`absolute inset-0 bg-linear-to-br ${server.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
                 />
 
                 {/* Glass shine */}
-                <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.02] to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-linear-to-br from-foreground/2 to-transparent pointer-events-none" />
 
                 {/* Hover shimmer */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/[0.03] to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"
+                  className="absolute inset-0 bg-linear-to-r from-transparent via-foreground/3 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"
                   initial={false}
                 />
 

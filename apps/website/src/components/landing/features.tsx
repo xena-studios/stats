@@ -49,11 +49,11 @@ const features = [
 export function Features() {
   return (
     <section id="features" className="py-16 md:py-24 relative">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-primary/35 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-linear-to-r from-transparent via-primary/35 to-transparent" />
 
       {/* Ambient glow */}
-      <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-primary/[0.04] rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute top-1/3 right-0 w-[300px] h-[300px] bg-primary/[0.03] rounded-full blur-[80px] pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-100 h-100 bg-primary/4 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/3 right-0 w-75 h-75 bg-primary/3 rounded-full blur-[80px] pointer-events-none" />
 
       <div className="mx-auto max-w-6xl px-6 relative">
         <AnimatedSection className="text-center mb-16">
@@ -81,12 +81,12 @@ export function Features() {
         <AnimatedSection className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {features.map((feature) => (
             <AnimatedItem key={feature.title}>
-              <div className="group relative rounded-2xl border border-primary/12 bg-card/55 p-6 hover:border-primary/30 transition-all duration-500 hover:shadow-lg hover:shadow-primary/[0.12] backdrop-blur-sm h-full">
+              <div className="group relative rounded-2xl border border-primary/12 bg-card/55 p-6 hover:border-primary/30 transition-all duration-500 hover:shadow-lg hover:shadow-primary/12 backdrop-blur-sm h-full">
                 {/* Hover gradient overlay */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-primary/[0.08] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 rounded-2xl bg-linear-to-b from-primary/8 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <div className="relative">
-                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/[0.12] border border-primary/25 text-primary group-hover:bg-primary/[0.16] group-hover:border-primary/40 group-hover:shadow-md group-hover:shadow-primary/20 transition-all duration-500">
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/12 border border-primary/25 text-primary group-hover:bg-primary/16 group-hover:border-primary/40 group-hover:shadow-md group-hover:shadow-primary/20 transition-all duration-500">
                     <feature.icon className="h-5 w-5" />
                   </div>
 

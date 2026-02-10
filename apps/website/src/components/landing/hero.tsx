@@ -138,15 +138,15 @@ export function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[100dvh] flex items-center overflow-hidden"
+      className="relative min-h-dvh flex items-center overflow-hidden"
     >
       {/* Glowy waves canvas background */}
       {shouldMountWaves && <GlowyWaves />}
 
       {/* Radial glow overlay */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[980px] h-[620px] bg-primary/[0.08] rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-245 h-155 bg-primary/8 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-background to-transparent" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 w-full pt-24 pb-20">
@@ -158,7 +158,7 @@ export function Hero() {
         >
           {/* Badge */}
           <motion.div variants={itemVariants} className="flex justify-center mb-8">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/[0.09] px-4 py-1.5 text-sm text-primary backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/9 px-4 py-1.5 text-sm text-primary backdrop-blur-sm">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
@@ -174,7 +174,7 @@ export function Hero() {
           >
             Minecraft Server Analytics
             <br />
-            <span className="bg-gradient-to-r from-[#7ca0ff] via-[#6c8ff8] to-[#7397ff] bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-[#7ca0ff] via-[#6c8ff8] to-[#7397ff] bg-clip-text text-transparent">
               Without the Hassle
             </span>
           </motion.h1>
@@ -275,7 +275,7 @@ export function Hero() {
                   <DashboardStat label="Uptime" value="99.7%" change="30d" />
                 </div>
                 {/* Animated chart bars */}
-                <div className="h-40 md:h-52 rounded-lg bg-secondary/40 border border-primary/15 flex items-end gap-[3px] p-4">
+                <div className="h-40 md:h-52 rounded-lg bg-secondary/40 border border-primary/15 flex items-end gap-0.75 p-4">
                   {[35, 45, 40, 60, 55, 70, 65, 80, 75, 85, 90, 70, 65, 78, 82, 88, 72, 68, 75, 90, 85, 92, 88, 78].map(
                     (h, i) => (
                       <motion.div
@@ -287,7 +287,7 @@ export function Hero() {
                           delay: 1.2 + i * 0.03,
                           ease: "easeOut",
                         }}
-                        className="flex-1 rounded-t bg-gradient-to-t from-primary/30 to-primary/80 hover:from-primary/45 hover:to-primary transition-colors cursor-default"
+                        className="flex-1 rounded-t bg-linear-to-t from-primary/30 to-primary/80 hover:from-primary/45 hover:to-primary transition-colors cursor-default"
                       />
                     )
                   )}
@@ -295,7 +295,7 @@ export function Hero() {
               </div>
             </div>
             {/* Bottom fade */}
-            <div className="absolute -bottom-px left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
+            <div className="absolute -bottom-px left-0 right-0 h-24 bg-linear-to-t from-background to-transparent" />
           </motion.div>
         </motion.div>
       </div>

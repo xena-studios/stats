@@ -33,7 +33,7 @@ function Connector({ isActive, index }: { isActive: boolean; index: number }) {
   return (
     <div
       aria-hidden="true"
-      className="absolute top-10 left-[calc(50%+44px)] hidden h-[2px] w-[calc(100%-88px)] md:block"
+      className="absolute top-10 left-[calc(50%+44px)] hidden h-0.5 w-[calc(100%-88px)] md:block"
     >
       <div className="h-full w-full rounded-full bg-primary/20" />
       <motion.div
@@ -48,7 +48,7 @@ function Connector({ isActive, index }: { isActive: boolean; index: number }) {
           delay: 0.45 + index * 0.2,
           ease: [0.16, 1, 0.3, 1],
         }}
-        className="absolute inset-0 origin-left rounded-full bg-gradient-to-r from-primary/70 to-primary/90"
+        className="absolute inset-0 origin-left rounded-full bg-linear-to-r from-primary/70 to-primary/90"
         style={{ transform: "scaleX(0)", opacity: 0.85 }}
       />
       <motion.div
@@ -82,7 +82,7 @@ export function HowItWorks() {
 
   return (
     <section ref={sectionRef} className="relative py-24 md:py-32">
-      <div className="absolute top-0 left-1/2 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-primary/35 to-transparent" />
+      <div className="absolute top-0 left-1/2 h-px w-2/3 -translate-x-1/2 bg-linear-to-r from-transparent via-primary/35 to-transparent" />
 
       <div className="mx-auto max-w-6xl px-6">
         <AnimatedSection className="mb-16 text-center">
@@ -151,7 +151,7 @@ export function HowItWorks() {
                             }
                           : { opacity: 0, scale: 0.6 }
                       }
-                      className="absolute -inset-2 rounded-2xl bg-primary/[0.11] blur-md"
+                      className="absolute -inset-2 rounded-2xl bg-primary/11 blur-md"
                     />
                     <motion.div
                       initial={{ opacity: 0, scale: 0.8 }}
@@ -168,7 +168,7 @@ export function HowItWorks() {
                             }
                           : { opacity: 0, scale: 0.8 }
                       }
-                      className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-primary/30 bg-card text-primary shadow-lg shadow-primary/[0.18] transition-all duration-500 group-hover:border-primary/50 group-hover:shadow-primary/30"
+                      className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-primary/30 bg-card text-primary shadow-lg shadow-primary/18 transition-all duration-500 group-hover:border-primary/50 group-hover:shadow-primary/30"
                     >
                       <Icon className="h-7 w-7" strokeWidth={1.5} />
                     </motion.div>
@@ -177,7 +177,7 @@ export function HowItWorks() {
                   <h3 className="mb-2 text-lg font-semibold tracking-tight text-foreground">
                     {step.title}
                   </h3>
-                  <p className="max-w-[240px] text-sm leading-relaxed text-muted-foreground">
+                  <p className="max-w-60 text-sm leading-relaxed text-muted-foreground">
                     {step.description}
                   </p>
                 </div>
