@@ -10,11 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SignInRouteImport } from './routes/sign-in'
-import { Route as HomeRouteImport } from './routes/home'
 import { Route as DashboardRouteImport } from './routes/_dashboard'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LandingIndexRouteImport } from './routes/landing/index'
 import { Route as LegalTermsOfServiceRouteImport } from './routes/legal/terms-of-service'
 import { Route as LegalPrivacyPolicyRouteImport } from './routes/legal/privacy-policy'
+import { Route as LandingLayoutRouteImport } from './routes/landing/layout'
 import { Route as DashboardSettingsRouteImport } from './routes/_dashboard/settings'
 import { Route as DashboardOverviewRouteImport } from './routes/_dashboard/overview'
 import { Route as DashboardAccountIndexRouteImport } from './routes/_dashboard/account/index'
@@ -26,11 +27,6 @@ const SignInRoute = SignInRouteImport.update({
   path: '/sign-in',
   getParentRoute: () => rootRouteImport,
 } as any)
-const HomeRoute = HomeRouteImport.update({
-  id: '/home',
-  path: '/home',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/_dashboard',
   getParentRoute: () => rootRouteImport,
@@ -38,6 +34,11 @@ const DashboardRoute = DashboardRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LandingIndexRoute = LandingIndexRouteImport.update({
+  id: '/landing/',
+  path: '/landing/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LegalTermsOfServiceRoute = LegalTermsOfServiceRouteImport.update({
@@ -48,6 +49,11 @@ const LegalTermsOfServiceRoute = LegalTermsOfServiceRouteImport.update({
 const LegalPrivacyPolicyRoute = LegalPrivacyPolicyRouteImport.update({
   id: '/legal/privacy-policy',
   path: '/legal/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LandingLayoutRoute = LandingLayoutRouteImport.update({
+  id: '/landing/layout',
+  path: '/landing/layout',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
@@ -79,24 +85,26 @@ const DashboardAccountSettingsRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/home': typeof HomeRoute
   '/sign-in': typeof SignInRoute
   '/overview': typeof DashboardOverviewRoute
   '/settings': typeof DashboardSettingsRoute
+  '/landing/layout': typeof LandingLayoutRoute
   '/legal/privacy-policy': typeof LegalPrivacyPolicyRoute
   '/legal/terms-of-service': typeof LegalTermsOfServiceRoute
+  '/landing/': typeof LandingIndexRoute
   '/account/settings': typeof DashboardAccountSettingsRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/account/': typeof DashboardAccountIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/home': typeof HomeRoute
   '/sign-in': typeof SignInRoute
   '/overview': typeof DashboardOverviewRoute
   '/settings': typeof DashboardSettingsRoute
+  '/landing/layout': typeof LandingLayoutRoute
   '/legal/privacy-policy': typeof LegalPrivacyPolicyRoute
   '/legal/terms-of-service': typeof LegalTermsOfServiceRoute
+  '/landing': typeof LandingIndexRoute
   '/account/settings': typeof DashboardAccountSettingsRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/account': typeof DashboardAccountIndexRoute
@@ -105,12 +113,13 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_dashboard': typeof DashboardRouteWithChildren
-  '/home': typeof HomeRoute
   '/sign-in': typeof SignInRoute
   '/_dashboard/overview': typeof DashboardOverviewRoute
   '/_dashboard/settings': typeof DashboardSettingsRoute
+  '/landing/layout': typeof LandingLayoutRoute
   '/legal/privacy-policy': typeof LegalPrivacyPolicyRoute
   '/legal/terms-of-service': typeof LegalTermsOfServiceRoute
+  '/landing/': typeof LandingIndexRoute
   '/_dashboard/account/settings': typeof DashboardAccountSettingsRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/_dashboard/account/': typeof DashboardAccountIndexRoute
@@ -119,24 +128,26 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/home'
     | '/sign-in'
     | '/overview'
     | '/settings'
+    | '/landing/layout'
     | '/legal/privacy-policy'
     | '/legal/terms-of-service'
+    | '/landing/'
     | '/account/settings'
     | '/api/auth/$'
     | '/account/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/home'
     | '/sign-in'
     | '/overview'
     | '/settings'
+    | '/landing/layout'
     | '/legal/privacy-policy'
     | '/legal/terms-of-service'
+    | '/landing'
     | '/account/settings'
     | '/api/auth/$'
     | '/account'
@@ -144,12 +155,13 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_dashboard'
-    | '/home'
     | '/sign-in'
     | '/_dashboard/overview'
     | '/_dashboard/settings'
+    | '/landing/layout'
     | '/legal/privacy-policy'
     | '/legal/terms-of-service'
+    | '/landing/'
     | '/_dashboard/account/settings'
     | '/api/auth/$'
     | '/_dashboard/account/'
@@ -158,10 +170,11 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DashboardRoute: typeof DashboardRouteWithChildren
-  HomeRoute: typeof HomeRoute
   SignInRoute: typeof SignInRoute
+  LandingLayoutRoute: typeof LandingLayoutRoute
   LegalPrivacyPolicyRoute: typeof LegalPrivacyPolicyRoute
   LegalTermsOfServiceRoute: typeof LegalTermsOfServiceRoute
+  LandingIndexRoute: typeof LandingIndexRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
 
@@ -172,13 +185,6 @@ declare module '@tanstack/react-router' {
       path: '/sign-in'
       fullPath: '/sign-in'
       preLoaderRoute: typeof SignInRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/home': {
-      id: '/home'
-      path: '/home'
-      fullPath: '/home'
-      preLoaderRoute: typeof HomeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_dashboard': {
@@ -195,6 +201,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/landing/': {
+      id: '/landing/'
+      path: '/landing'
+      fullPath: '/landing/'
+      preLoaderRoute: typeof LandingIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/legal/terms-of-service': {
       id: '/legal/terms-of-service'
       path: '/legal/terms-of-service'
@@ -207,6 +220,13 @@ declare module '@tanstack/react-router' {
       path: '/legal/privacy-policy'
       fullPath: '/legal/privacy-policy'
       preLoaderRoute: typeof LegalPrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/landing/layout': {
+      id: '/landing/layout'
+      path: '/landing/layout'
+      fullPath: '/landing/layout'
+      preLoaderRoute: typeof LandingLayoutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_dashboard/settings': {
@@ -268,10 +288,11 @@ const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardRoute: DashboardRouteWithChildren,
-  HomeRoute: HomeRoute,
   SignInRoute: SignInRoute,
+  LandingLayoutRoute: LandingLayoutRoute,
   LegalPrivacyPolicyRoute: LegalPrivacyPolicyRoute,
   LegalTermsOfServiceRoute: LegalTermsOfServiceRoute,
+  LandingIndexRoute: LandingIndexRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }
 export const routeTree = rootRouteImport
