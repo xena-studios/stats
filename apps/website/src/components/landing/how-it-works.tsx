@@ -27,7 +27,7 @@ const steps = [
     icon: BarChart3,
     title: "Track Everything",
     description:
-      "Your stats appear instantly on your dashboard. Players, performance, uptime — all in one place.",
+      "Your stats appear instantly on your dashboard. Players, performance, uptime: all in one place.",
     step: "03",
   },
 ];

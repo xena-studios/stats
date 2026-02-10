@@ -21,7 +21,7 @@ export function RouteComponent() {
       <Hero />
       <HowItWorks />
       <Features />
-      <ServerShowcase />
+      {/* <ServerShowcase /> Include later when we have servers to show off */}
       <Pricing />
       <FAQ />
       <CTA />

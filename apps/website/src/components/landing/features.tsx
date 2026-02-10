@@ -12,7 +12,7 @@ const features = [
     icon: Users,
     title: "Real-time Player Tracking",
     description:
-      "See who's online, join/leave events, and player counts updated every second.",
+      "See who's online, join/leave events, and live player counts.",
   },
   {
     icon: Gauge,

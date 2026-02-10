@@ -24,15 +24,14 @@ const footerColumns = [
     title: "Company",
     links: [
       { label: "Discord", href: "#" },
-      { label: "GitHub", href: "#" },
-      { label: "Twitter", href: "#" },
+      { label: "GitHub", href: "https://github.com/xena-studios/serverstats" },
     ],
   },
   {
     title: "Legal",
     links: [
-      { label: "Privacy", href: "#" },
-      { label: "Terms", href: "#" },
+      { label: "Privacy", href: "/legal/privacy-policy" },
+      { label: "Terms", href: "/legal/terms-of-service" },
     ],
   },
 ];

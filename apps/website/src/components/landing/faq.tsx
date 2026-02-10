@@ -16,7 +16,7 @@ const faqs = [
   {
     question: "How does it work without opening ports?",
     answer:
-      "ServerStats uses an outbound-only connection. Your server plugin pushes data to our cloud via HTTPS \u2014 the same way your browser loads a webpage. No inbound ports, no firewall changes, no security risks.",
+      "ServerStats uses an outbound-only connection. Your server plugin pushes data to our cloud via HTTPS, the same way your browser loads a webpage. No inbound ports, no firewall changes, no security risks.",
   },
   {
     question: "What Minecraft versions are supported?",
@@ -26,17 +26,12 @@ const faqs = [
   {
     question: "Is my server data secure?",
     answer:
-      "Absolutely. All data is encrypted in transit via TLS and at rest with AES-256 encryption. We never share your data with third parties, and you can delete your data at any time from your dashboard.",
+      "Absolutely. All data is encrypted in transit and stored securely. We never share your data with third parties, and you can delete your data at any time from your dashboard.",
   },
   {
     question: "Can I export my data?",
     answer:
-      "Yes. Pro users can export all analytics data in CSV or JSON format directly from the dashboard. We also provide a REST API for programmatic access to your server statistics.",
-  },
-  {
-    question: "Do you offer refunds?",
-    answer:
-      "Yes. We offer a 14-day money-back guarantee on all Pro subscriptions. If you\u2019re not satisfied, contact our support team for a full refund \u2014 no questions asked.",
+      "Yes. Pro and Enterprise users can export all analytics data in CSV or JSON format directly from the dashboard. We also provide a REST API for programmatic access to your server statistics.",
   },
 ];
 

@@ -245,7 +245,7 @@ export function Hero() {
               <div className="p-6 md:p-8">
                 <div className="grid grid-cols-3 gap-4 mb-6">
                   <DashboardStat label="Players Online" value="47" change="+12%" />
-                  <DashboardStat label="TPS" value="19.8" change="Stable" />
+                  <DashboardStat label="TPS" value="20.0" change="Stable" />
                   <DashboardStat label="Uptime" value="99.7%" change="30d" />
                 </div>
                 {/* Animated chart bars */}

@@ -60,8 +60,10 @@ const plans = [
     features: [
       "Unlimited servers",
       "Unlimited data history",
-      "API access",
+	  "Advanced session analytics",
+      "Uptime alerts",
       "Dedicated support",
+      "API access",
       "Custom integrations",
     ],
   },
@@ -150,26 +152,25 @@ export function Pricing() {
                       className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground to-transparent pointer-events-none"
                     />
                   )}
-
-                  {/* Popular badge */}
-                  {plan.popular && (
-                    <div className="relative mb-4">
-                      <Badge className="bg-primary/10 text-primary border border-primary/20 px-3 py-1 text-xs gap-1.5">
-                        <Sparkles className="h-3 w-3" />
-                        Most Popular
-                      </Badge>
-                    </div>
-                  )}
-
+                  {/* Most Popular Badge */}
                   <div className="relative flex flex-col flex-1">
-                    {/* Icon */}
-                    <div
-                      className={cn(
-                        "mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-border/40 bg-secondary/40",
-                        plan.popular && "border-primary/35 bg-primary/[0.12]"
+                    <div className="mb-4 flex items-center justify-between gap-3">
+                      {/* Icon */}
+                      <div
+                        className={cn(
+                          "flex h-10 w-10 items-center justify-center rounded-xl border border-border/40 bg-secondary/40",
+                          plan.popular && "border-primary/35 bg-primary/[0.12]"
+                        )}
+                      >
+                        <Icon className={cn("h-5 w-5", plan.iconColor)} />
+                      </div>
+
+                      {plan.popular && (
+                        <Badge className="shrink-0 bg-primary/10 text-primary border border-primary/20 px-3 py-1 text-xs gap-1.5">
+                          <Sparkles className="h-3 w-3" />
+                          Most Popular
+                        </Badge>
                       )}
-                    >
-                      <Icon className={cn("h-5 w-5", plan.iconColor)} />
                     </div>
 
                     {/* Name & description */}

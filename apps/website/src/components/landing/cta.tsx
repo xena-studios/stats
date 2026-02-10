@@ -49,8 +49,10 @@ export function CTA() {
                   Ready to see your server data?
                 </h2>
                 <p className="mt-5 text-muted-foreground max-w-md mx-auto text-pretty leading-relaxed text-lg">
-                  Join thousands of Minecraft server owners who trust
+                  {/*
+				  Join thousands of Minecraft server owners who trust
                   ServerStats for their analytics. Start free today.
+				  */}
                 </p>
                 <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
                   <Button
