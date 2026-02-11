@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+//import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Check, Crown, Rocket, Sparkles, Star } from "lucide-react";
+import { Check, /*Crown,*/ Rocket, /*Sparkles,*/ Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import {
@@ -39,14 +39,15 @@ const plans = [
     gradient: "from-primary/20 via-primary/10 to-transparent",
     iconColor: "text-primary",
     features: [
-      "5 servers",
-      "30-day data history",
+      "Unlimited servers",
+      "Unlimited data history",
       "Advanced session analytics",
       "Uptime alerts",
       "Priority support",
     ],
   },
-  {
+
+  /*{
     name: "Enterprise",
     popular: false,
     price: "$30",
@@ -64,7 +65,8 @@ const plans = [
       "API access",
       "Custom integrations",
     ],
-  },
+  },*/
+
 ];
 
 export function Pricing() {
@@ -98,7 +100,7 @@ export function Pricing() {
         </AnimatedSection>
 
         {/* Pricing Cards */}
-        <AnimatedSection className="mx-auto grid max-w-5xl grid-cols-1 gap-5 md:grid-cols-3 mb-16">
+        <AnimatedSection className="mx-auto mb-16 flex max-w-5xl flex-wrap justify-center gap-5">
           {plans.map((plan, index) => {
             const Icon = plan.icon;
             const isHovered = hoveredPlan === index;
@@ -118,7 +120,7 @@ export function Pricing() {
                 onHoverEnd={() => setHoveredPlan(null)}
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className="relative"
+                className="relative w-full md:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-0.834rem)] max-w-md"
               >
                 {/* Popular badge glow */}
                 {plan.popular && (
@@ -150,9 +152,10 @@ export function Pricing() {
                       className="absolute inset-0 bg-linear-to-r from-transparent via-foreground to-transparent pointer-events-none"
                     />
                   )}
-                  {/* Most Popular Badge */}
+				  
+                  
                   <div className="relative flex flex-col flex-1">
-                    <div className="mb-4 flex items-center justify-between gap-3">
+                     <div className="mb-4 flex items-center justify-between gap-3">
                       {/* Icon */}
                       <div
                         className={cn(
@@ -163,13 +166,14 @@ export function Pricing() {
                         <Icon className={cn("h-5 w-5", plan.iconColor)} />
                       </div>
 
-                      {plan.popular && (
+                      {/*{plan.popular && (
                         <Badge className="shrink-0 bg-primary/10 text-primary border border-primary/20 px-3 py-1 text-xs gap-1.5">
                           <Sparkles className="h-3 w-3" />
                           Most Popular
                         </Badge>
-                      )}
+                      )}*/}
                     </div>
+					
 
                     {/* Name & description */}
                     <h3 className="text-lg font-semibold text-foreground">{plan.name}</h3>
