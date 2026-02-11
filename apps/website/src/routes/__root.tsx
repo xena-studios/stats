@@ -1,7 +1,12 @@
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { FormDevtoolsPanel } from "@tanstack/react-form-devtools";
 
-import { Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import {
+	createRootRoute,
+	HeadContent,
+	Link,
+	Scripts,
+} from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { Toaster } from "@/components/ui/sonner";
 import appCss from "@/styles.css?url";
@@ -31,7 +36,7 @@ export const Route = createRootRoute({
 function NotFound() {
 	return (
 		<main className="flex min-h-[50vh] grow flex-col items-center justify-center gap-3 px-6 text-center">
-			<h1 className="text-3xl font-bold tracking-tight">Page Not Found</h1>
+			<h1 className="font-bold text-3xl tracking-tight">Page Not Found</h1>
 			<p className="max-w-md text-muted-foreground">
 				The page you requested does not exist or may have moved.
 			</p>
