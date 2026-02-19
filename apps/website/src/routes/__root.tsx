@@ -1,11 +1,7 @@
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { FormDevtoolsPanel } from "@tanstack/react-form-devtools";
 
-import {
-	createRootRoute,
-	HeadContent,
-	Scripts,
-} from "@tanstack/react-router";
+import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { PageNotFound } from "@/components/errors/page-not-found";
 import { Toaster } from "@/components/ui/sonner";

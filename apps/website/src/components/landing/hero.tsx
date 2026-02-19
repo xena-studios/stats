@@ -285,9 +285,7 @@ export function Hero() {
 												key={bar.id}
 												initial={{ height: 0 }}
 												animate={
-													isInView
-														? { height: `${bar.h}%` }
-														: { height: 0 }
+													isInView ? { height: `${bar.h}%` } : { height: 0 }
 												}
 												transition={{
 													duration: 0.8,

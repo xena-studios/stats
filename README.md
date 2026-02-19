@@ -36,3 +36,9 @@ Quick start:
 		pnpm run preview
 		```
 		- Press `Ctrl + C` to stop preview.
+
+4. Code Linting:
+	- In the root directory:
+		```bash
+		pnpm -w run check --unsafe
+		```
