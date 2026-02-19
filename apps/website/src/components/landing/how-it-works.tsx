@@ -1,5 +1,3 @@
-"use client";
-
 import { motion, useInView } from "framer-motion";
 import { BarChart3, Download, Link } from "lucide-react";
 import { useRef } from "react";

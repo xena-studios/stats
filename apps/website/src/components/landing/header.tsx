@@ -1,5 +1,3 @@
-"use client";
-
 import { AnimatePresence, motion } from "framer-motion";
 import { BarChart3, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";

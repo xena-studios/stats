@@ -15,7 +15,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as HomeIndexRouteImport } from './routes/home/index'
 import { Route as LegalTermsOfServiceRouteImport } from './routes/legal/terms-of-service'
 import { Route as LegalPrivacyPolicyRouteImport } from './routes/legal/privacy-policy'
-import { Route as HomeLayoutRouteImport } from './routes/home/layout'
 import { Route as DashboardSettingsRouteImport } from './routes/_dashboard/settings'
 import { Route as DashboardOverviewRouteImport } from './routes/_dashboard/overview'
 import { Route as DashboardAccountIndexRouteImport } from './routes/_dashboard/account/index'
@@ -51,11 +50,6 @@ const LegalPrivacyPolicyRoute = LegalPrivacyPolicyRouteImport.update({
   path: '/legal/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
-const HomeLayoutRoute = HomeLayoutRouteImport.update({
-  id: '/home/layout',
-  path: '/home/layout',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
@@ -88,7 +82,6 @@ export interface FileRoutesByFullPath {
   '/sign-in': typeof SignInRoute
   '/overview': typeof DashboardOverviewRoute
   '/settings': typeof DashboardSettingsRoute
-  '/home/layout': typeof HomeLayoutRoute
   '/legal/privacy-policy': typeof LegalPrivacyPolicyRoute
   '/legal/terms-of-service': typeof LegalTermsOfServiceRoute
   '/home/': typeof HomeIndexRoute
@@ -101,7 +94,6 @@ export interface FileRoutesByTo {
   '/sign-in': typeof SignInRoute
   '/overview': typeof DashboardOverviewRoute
   '/settings': typeof DashboardSettingsRoute
-  '/home/layout': typeof HomeLayoutRoute
   '/legal/privacy-policy': typeof LegalPrivacyPolicyRoute
   '/legal/terms-of-service': typeof LegalTermsOfServiceRoute
   '/home': typeof HomeIndexRoute
@@ -116,7 +108,6 @@ export interface FileRoutesById {
   '/sign-in': typeof SignInRoute
   '/_dashboard/overview': typeof DashboardOverviewRoute
   '/_dashboard/settings': typeof DashboardSettingsRoute
-  '/home/layout': typeof HomeLayoutRoute
   '/legal/privacy-policy': typeof LegalPrivacyPolicyRoute
   '/legal/terms-of-service': typeof LegalTermsOfServiceRoute
   '/home/': typeof HomeIndexRoute
@@ -131,7 +122,6 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/overview'
     | '/settings'
-    | '/home/layout'
     | '/legal/privacy-policy'
     | '/legal/terms-of-service'
     | '/home/'
@@ -144,7 +134,6 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/overview'
     | '/settings'
-    | '/home/layout'
     | '/legal/privacy-policy'
     | '/legal/terms-of-service'
     | '/home'
@@ -158,7 +147,6 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/_dashboard/overview'
     | '/_dashboard/settings'
-    | '/home/layout'
     | '/legal/privacy-policy'
     | '/legal/terms-of-service'
     | '/home/'
@@ -171,7 +159,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DashboardRoute: typeof DashboardRouteWithChildren
   SignInRoute: typeof SignInRoute
-  HomeLayoutRoute: typeof HomeLayoutRoute
   LegalPrivacyPolicyRoute: typeof LegalPrivacyPolicyRoute
   LegalTermsOfServiceRoute: typeof LegalTermsOfServiceRoute
   HomeIndexRoute: typeof HomeIndexRoute
@@ -220,13 +207,6 @@ declare module '@tanstack/react-router' {
       path: '/legal/privacy-policy'
       fullPath: '/legal/privacy-policy'
       preLoaderRoute: typeof LegalPrivacyPolicyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/home/layout': {
-      id: '/home/layout'
-      path: '/home/layout'
-      fullPath: '/home/layout'
-      preLoaderRoute: typeof HomeLayoutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_dashboard/settings': {
@@ -289,7 +269,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardRoute: DashboardRouteWithChildren,
   SignInRoute: SignInRoute,
-  HomeLayoutRoute: HomeLayoutRoute,
   LegalPrivacyPolicyRoute: LegalPrivacyPolicyRoute,
   LegalTermsOfServiceRoute: LegalTermsOfServiceRoute,
   HomeIndexRoute: HomeIndexRoute,

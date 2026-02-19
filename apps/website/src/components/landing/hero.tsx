@@ -1,5 +1,3 @@
-"use client";
-
 import { motion, useInView, type Variants } from "framer-motion";
 import { ArrowRight, BookOpen } from "lucide-react";
 import { useEffect, useRef, useState } from "react";

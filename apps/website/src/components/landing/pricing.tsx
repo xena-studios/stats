@@ -1,7 +1,5 @@
-"use client";
-
 import { motion } from "framer-motion";
-import { Check, /*Crown,*/ Rocket, /*Sparkles,*/ Star } from "lucide-react";
+import { Check, Rocket, /*Sparkles,*/ Star } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 //import { Badge } from "@/components/ui/badge";
@@ -43,26 +41,6 @@ const plans = [
 			"Priority support",
 		],
 	},
-
-	/*{
-    name: "Enterprise",
-    popular: false,
-    price: "$30",
-    period: "/month",
-    description: "For networks & large teams",
-    icon: Crown,
-    gradient: "from-amber-500/15 via-amber-500/5 to-transparent",
-    iconColor: "text-amber-500",
-    features: [
-      "Unlimited servers",
-      "Unlimited data history",
-	  "Advanced session analytics",
-      "Uptime alerts",
-      "Dedicated support",
-      "API access",
-      "Custom integrations",
-    ],
-  },*/
 ];
 
 export function Pricing() {

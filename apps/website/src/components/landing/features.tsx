@@ -1,5 +1,3 @@
-"use client";
-
 import { Blocks, Clock, Gauge, Shield, Users, WifiOff } from "lucide-react";
 import {
 	AnimatedItem,

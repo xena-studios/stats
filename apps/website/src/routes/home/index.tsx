@@ -7,7 +7,7 @@ import { Header } from "@/components/landing/header";
 import { Hero } from "@/components/landing/hero";
 import { HowItWorks } from "@/components/landing/how-it-works";
 import { Pricing } from "@/components/landing/pricing";
-import "./globals.css";
+import "./styles.css";
 
 export const Route = createFileRoute("/home/")({
 	component: RouteComponent,
