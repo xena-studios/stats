@@ -143,26 +143,6 @@ function CountUpStat({
 export function Hero() {
 	const sectionRef = useRef<HTMLElement | null>(null);
 	const isInView = useInView(sectionRef, { amount: 0.2 });
-	const [hasScrolled, setHasScrolled] = useState(false);
-	const [shouldMountWaves, setShouldMountWaves] = useState(false);
-
-	useEffect(() => {
-		const onScroll = () => {
-			if (window.scrollY > 8) {
-				setHasScrolled(true);
-			}
-		};
-
-		onScroll();
-		window.addEventListener("scroll", onScroll, { passive: true });
-		return () => window.removeEventListener("scroll", onScroll);
-	}, []);
-
-	useEffect(() => {
-		if (hasScrolled && isInView) {
-			setShouldMountWaves(true);
-		}
-	}, [hasScrolled, isInView]);
 
 	return (
 		<section
@@ -170,7 +150,7 @@ export function Hero() {
 			className="relative flex min-h-dvh items-center overflow-hidden"
 		>
 			{/* Glowy waves canvas background */}
-			{shouldMountWaves && <GlowyWaves />}
+			<GlowyWaves />
 
 			{/* Radial glow overlay */}
 			<div className="pointer-events-none absolute inset-0">
@@ -305,7 +285,7 @@ export function Hero() {
 												key={bar.id}
 												initial={{ height: 0 }}
 												animate={
-													shouldMountWaves
+													isInView
 														? { height: `${bar.h}%` }
 														: { height: 0 }
 												}

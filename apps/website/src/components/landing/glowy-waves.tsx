@@ -30,6 +30,8 @@ export function GlowyWaves() {
 		let time = 0;
 		let isVisible = true;
 		let isInViewport = false;
+		let width = 0;
+		let height = 0;
 		let observer: IntersectionObserver | undefined;
 		const prefersReducedMotion = window.matchMedia(
 			"(prefers-reduced-motion: reduce)"
@@ -73,6 +75,8 @@ export function GlowyWaves() {
 		const resize = () => {
 			const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
 			const rect = canvas.getBoundingClientRect();
+			width = rect.width;
+			height = rect.height;
 			canvas.width = rect.width * dpr;
 			canvas.height = rect.height * dpr;
 			ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -135,23 +139,26 @@ export function GlowyWaves() {
 				return;
 			}
 
-			const rect = canvas.getBoundingClientRect();
-			const w = rect.width;
-			const h = rect.height;
-
 			mouseRef.current.x +=
-				(targetMouseRef.current.x - mouseRef.current.x) * 0.05;
+				(targetMouseRef.current.x - mouseRef.current.x) * 0.06;
 			mouseRef.current.y +=
-				(targetMouseRef.current.y - mouseRef.current.y) * 0.05;
+				(targetMouseRef.current.y - mouseRef.current.y) * 0.06;
 
-			ctx.clearRect(0, 0, w, h);
+			ctx.clearRect(0, 0, width, height);
 			time += 0.015;
 
 			for (const wave of waves) {
-				drawWave(w, h, wave, time, mouseRef.current);
+				drawWave(width, height, wave, time, mouseRef.current);
 			}
 
 			animationId = requestAnimationFrame(animate);
+		};
+
+		const drawStaticFrame = () => {
+			ctx.clearRect(0, 0, width, height);
+			for (const wave of waves) {
+				drawWave(width, height, wave, time, mouseRef.current);
+			}
 		};
 
 		const startAnimation = () => {
@@ -159,6 +166,7 @@ export function GlowyWaves() {
 				return;
 			}
 			resize();
+			drawStaticFrame();
 			animationId = requestAnimationFrame(animate);
 		};
 
@@ -188,20 +196,25 @@ export function GlowyWaves() {
 			([entry]) => {
 				isInViewport = entry.isIntersecting;
 				if (isInViewport) startAnimation();
-				if (!isInViewport) stopAnimation();
+				if (!isInViewport) {
+					stopAnimation();
+					drawStaticFrame();
+				}
 			},
 			{ threshold: 0.15 }
 		);
 		observer.observe(canvas);
 
+		resize();
+		drawStaticFrame();
 		window.addEventListener("resize", resize);
-		window.addEventListener("pointermove", handleMouseMove, { passive: true });
+		canvas.addEventListener("pointermove", handleMouseMove, { passive: true });
 		document.addEventListener("visibilitychange", handleVisibilityChange);
 
 		return () => {
 			stopAnimation();
 			window.removeEventListener("resize", resize);
-			window.removeEventListener("pointermove", handleMouseMove);
+			canvas.removeEventListener("pointermove", handleMouseMove);
 			document.removeEventListener("visibilitychange", handleVisibilityChange);
 			observer?.disconnect();
 		};
