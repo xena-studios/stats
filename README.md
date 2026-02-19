@@ -11,19 +11,28 @@ An open-source, cloud-based Minecraft server analytics panel built with TanStack
 
 Quick start:
 
-1. Install dependencies with `pnpm install` from the repo root.
+1. Install dependencies with `pnpm install` from the root directory.
 2. Run the website in a development environment:
-
-```bash
-cd apps/website
-pnpm run dev
-```
+	- In the root directory:
+		```bash
+		pnpm web dev
+		```
+	- Or
+		```bash
+		cd apps/website
+		pnpm run dev
+		```
 
 3. Build and preview website:
-
-```bash
-cd apps/website
-pnpm run build
-pnpm run preview
-```
- - Press `Ctrl + C` to stop preview.
+	- In the root directory:
+		```bash
+		pnpm web build
+		pnpm web preview
+		```
+	- Or
+		```bash
+		cd apps/website
+		pnpm run build
+		pnpm run preview
+		```
+		- Press `Ctrl + C` to stop preview.

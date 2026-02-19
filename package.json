@@ -2,7 +2,8 @@
 	"name": "serverstats",
 	"private": true,
 	"scripts": {
-		"check": "biome check --write"
+		"check": "biome check --write",
+		"web": "pnpm --filter @serverstats/website"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.3.14",
