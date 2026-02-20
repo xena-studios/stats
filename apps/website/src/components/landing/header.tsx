@@ -36,8 +36,8 @@ export function Header() {
 
 	return (
 		<motion.header
-			initial={{ y: -20, opacity: 0 }}
-			animate={{ y: 0, opacity: 1 }}
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
 			transition={{ duration: 0.5, ease: "easeOut" }}
 			className={cn(
 				"fixed top-0 right-0 left-0 z-50 transition-all duration-500",
@@ -76,7 +76,7 @@ export function Header() {
 							size="sm"
 							className="text-muted-foreground hover:text-foreground"
 						>
-							Login
+							Sign In
 						</Button>
 						<Button
 							size="sm"
