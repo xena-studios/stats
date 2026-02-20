@@ -3,6 +3,7 @@ import { FormDevtoolsPanel } from "@tanstack/react-form-devtools";
 
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { PageNotFound } from "@/components/errors/page-not-found";
 import { Toaster } from "@/components/ui/sonner";
 import appCss from "@/styles.css?url";
 
@@ -25,7 +26,12 @@ export const Route = createRootRoute({
 		],
 	}),
 	shellComponent: RootDocument,
+	notFoundComponent: NotFound,
 });
+
+function NotFound() {
+	return <PageNotFound />;
+}
 
 function RootDocument({ children }: { children: React.ReactNode }) {
 	return (
