@@ -13,7 +13,7 @@ import { resend } from "@/email";
 import { env } from "@/env";
 
 export const auth = betterAuth({
-	appName: "ServerStats",
+	appName: "Xena Stats",
 	baseURL: env.VITE_APP_URL,
 	secret: env.AUTH_SECRET,
 	database: drizzleAdapter(database, {
@@ -25,7 +25,7 @@ export const auth = betterAuth({
 			await resend.emails.send({
 				from: env.RESEND_FROM_EMAIL,
 				to: user.email,
-				subject: "ServerStats Email Verification",
+				subject: "Xena Stats Email Verification",
 				react: EmailVerificationEmail({ emailVerificationURL: url }),
 			});
 		},
@@ -54,7 +54,7 @@ export const auth = betterAuth({
 				await resend.emails.send({
 					from: env.RESEND_FROM_EMAIL,
 					to: email,
-					subject: "ServerStats Sign in Link",
+					subject: "Xena Stats Sign in Link",
 					react: MagicLinkEmail({ signInURL: url }),
 				});
 			},
@@ -69,7 +69,7 @@ export const auth = betterAuth({
 				await resend.emails.send({
 					from: env.RESEND_FROM_EMAIL,
 					to: user.email,
-					subject: "ServerStats Change Email Confirmation",
+					subject: "Xena Stats Change Email Confirmation",
 					react: ChangeEmailConfirmationEmail({
 						changeEmailConfirmationURL: url,
 						newEmail: newEmail,
@@ -83,7 +83,7 @@ export const auth = betterAuth({
 				await resend.emails.send({
 					from: env.RESEND_FROM_EMAIL,
 					to: user.email,
-					subject: "ServerStats Delete Account Verification",
+					subject: "Xena Stats Delete Account Verification",
 					react: DeleteAccountVerificationEmail({
 						deleteAccountVerificationURL: url,
 					}),

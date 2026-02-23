@@ -15,7 +15,7 @@ const faqs = [
 		id: "no-ports",
 		question: "How does it work without opening ports?",
 		answer:
-			"ServerStats uses an outbound-only connection. Your server plugin pushes data to our cloud via HTTPS, the same way your browser loads a webpage. No inbound ports, no firewall changes, no security risks.",
+			"Xena Stats uses an outbound-only connection. Your server plugin pushes data to our cloud via HTTPS, the same way your browser loads a webpage. No inbound ports, no firewall changes, no security risks.",
 	},
 	{
 		id: "mc-versions",

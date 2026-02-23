@@ -263,7 +263,7 @@ export function Hero() {
 									</div>
 									<div className="mx-auto flex h-7 w-72 items-center justify-center rounded-md border border-primary/10 bg-secondary/70 px-3">
 										<span className="font-mono text-muted-foreground text-xs">
-											app.serverstats.io/dashboard
+											www.xenastats.com/servers
 										</span>
 									</div>
 								</div>

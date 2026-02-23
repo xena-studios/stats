@@ -22,7 +22,7 @@ const footerColumns = [
 		title: "Company",
 		links: [
 			{ label: "Discord", href: "#" },
-			{ label: "GitHub", href: "https://github.com/xena-studios/serverstats" },
+			{ label: "GitHub", href: "https://github.com/xena-studios/stats" },
 		],
 	},
 	{
@@ -52,7 +52,7 @@ export function Footer() {
 								<BarChart3 className="h-4 w-4 text-primary" />
 							</div>
 							<span className="font-semibold text-base text-foreground">
-								ServerStats
+								Xena Stats
 							</span>
 						</a>
 						<p className="mt-4 max-w-xs text-muted-foreground text-sm leading-relaxed">
@@ -86,7 +86,7 @@ export function Footer() {
 				{/* Bottom bar */}
 				<div className="mt-12 flex flex-col items-center justify-between gap-4 border-border/30 border-t pt-8 md:flex-row">
 					<p className="text-muted-foreground text-sm">
-						{"\u00A9"} {new Date().getFullYear()} ServerStats. All rights
+						{"\u00A9"} {new Date().getFullYear()} Xena Studios. All rights
 						reserved.
 					</p>
 					<div className="flex items-center gap-1.5">

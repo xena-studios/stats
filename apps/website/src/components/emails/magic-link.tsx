@@ -70,9 +70,9 @@ export function MagicLinkEmail({ signInURL }: { signInURL: string }) {
 	return (
 		<Html>
 			<Body style={main}>
-				<Preview>Your sign-in link for ServerStats</Preview>
+				<Preview>Your sign-in link for Xena Stats</Preview>
 				<Container style={container}>
-					<Heading style={heading}>Your sign-in link for ServerStats</Heading>
+					<Heading style={heading}>Your sign-in link for Xena Stats</Heading>
 					<Section style={buttonContainer}>
 						<Button style={button} href={signInURL}>
 							Sign in to Your Account
@@ -84,7 +84,7 @@ export function MagicLinkEmail({ signInURL }: { signInURL: string }) {
 					</Text>
 					<Hr style={hr} />
 					<Link href={env.VITE_APP_URL} style={reportLink}>
-						ServerStats
+						Xena Stats
 					</Link>
 				</Container>
 			</Body>

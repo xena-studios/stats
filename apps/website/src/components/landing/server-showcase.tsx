@@ -83,7 +83,7 @@ export function ServerShowcase() {
 						className="mx-auto mt-4 max-w-lg text-pretty text-muted-foreground leading-relaxed"
 					>
 						From small communities to massive networks, thousands of servers
-						trust ServerStats for their analytics.
+						trust Xena Stats for their analytics.
 					</AnimatedText>
 				</AnimatedSection>
 
@@ -149,7 +149,7 @@ export function ServerShowcase() {
 				>
 					<p className="text-muted-foreground text-sm">
 						Join <span className="font-medium text-foreground">4,200+</span>{" "}
-						servers already using ServerStats
+						servers already using Xena Stats
 					</p>
 				</motion.div>
 			</div>

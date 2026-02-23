@@ -1,5 +1,5 @@
 {
-	"name": "@serverstats/website",
+	"name": "@stats/website",
 	"private": true,
 	"type": "module",
 	"scripts": {

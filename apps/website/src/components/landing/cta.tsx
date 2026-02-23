@@ -29,7 +29,7 @@ export function CTA() {
 								<p className="mx-auto mt-5 max-w-md text-pretty text-lg text-muted-foreground leading-relaxed">
 									{/*
 				  Join thousands of Minecraft server owners who trust
-                  ServerStats for their analytics. Start free today.
+                  Xena Stats for their analytics. Start free today.
 				  */}
 								</p>
 								<div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">

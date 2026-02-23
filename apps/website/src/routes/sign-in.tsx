@@ -19,7 +19,7 @@ function RouteComponent() {
 					<div className="flex size-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
 						<ChartArea className="size-4" />
 					</div>
-					ServerStats
+					Xena Stats
 				</div>
 				<SignInCard />
 				<FieldDescription className="px-6 text-center">

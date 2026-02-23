@@ -53,7 +53,7 @@ export function Header() {
 							<BarChart3 className="h-4 w-4 text-primary" />
 						</div>
 						<span className="font-semibold text-foreground text-lg tracking-tight">
-							ServerStats
+							Xena Stats
 						</span>
 					</a>
 
