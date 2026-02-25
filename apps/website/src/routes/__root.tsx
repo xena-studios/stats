@@ -3,8 +3,10 @@ import { FormDevtoolsPanel } from "@tanstack/react-form-devtools";
 
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import type { ReactNode } from "react";
 import { PageNotFound } from "@/components/errors/page-not-found";
 import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import appCss from "@/styles.css?url";
 
 export const Route = createRootRoute({
@@ -29,15 +31,17 @@ export const Route = createRootRoute({
 	notFoundComponent: PageNotFound,
 });
 
-function RootDocument({ children }: { children: React.ReactNode }) {
+function RootDocument({ children }: { children: ReactNode }) {
 	return (
-		<html lang="en" className="dark">
+		<html lang="en">
 			<head>
 				<HeadContent />
 			</head>
 			<body className="flex min-h-screen flex-col">
-				{children}
-				<Toaster />
+				<TooltipProvider>
+					{children}
+					<Toaster />
+				</TooltipProvider>
 				<TanStackDevtools
 					config={{
 						position: "bottom-right",

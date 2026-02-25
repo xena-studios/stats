@@ -119,9 +119,7 @@ export function OrganizationsList() {
 								<div className="flex items-center gap-4">
 									<Avatar className="size-12">
 										<AvatarImage src={org.logo ?? undefined} alt={org.name} />
-										<AvatarFallback className="bg-primary/10 font-medium text-primary">
-											{getInitials(org.name)}
-										</AvatarFallback>
+										<AvatarFallback>{getInitials(org.name)}</AvatarFallback>
 									</Avatar>
 									<div className="space-y-1">
 										<div className="flex items-center gap-2">

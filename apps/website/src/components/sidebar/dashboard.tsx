@@ -1,3 +1,4 @@
+import type { ComponentProps } from "react";
 import {
 	Sidebar,
 	SidebarContent,
@@ -7,9 +8,7 @@ import {
 import { OrganizationSidebar } from "./organization";
 import { UserSidebar } from "./user";
 
-export function DashboardSidebar({
-	...props
-}: React.ComponentProps<typeof Sidebar>) {
+export function DashboardSidebar({ ...props }: ComponentProps<typeof Sidebar>) {
 	return (
 		<Sidebar variant="inset" {...props}>
 			<SidebarHeader>
