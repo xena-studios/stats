@@ -1,5 +1,10 @@
 import type { Plugin } from "vite";
 
+// Injects a minimal Reflect metadata polyfill into chunks containing tsyringe.
+// This fixes runtime errors when bundling the better-auth passkey plugin
+// with Vite, since tsyringe relies on Reflect metadata APIs that aren't
+// natively available.
+
 const REFLECT_POLYFILL = `
 if (typeof Reflect.getMetadata !== "function") {
   const m = new WeakMap();
@@ -23,10 +28,14 @@ export function reflectPolyfillPlugin(): Plugin {
 	return {
 		name: "reflect-polyfill",
 		renderChunk(code, chunk) {
-			if (chunk.fileName.includes("tsyringe")) {
-				return REFLECT_POLYFILL + code;
-			}
-			return null;
+			// Only inject into chunks that actually contain tsyringe
+			const hasTsyringe = [...(chunk.moduleIds ?? [])].some((id) =>
+				id.includes("tsyringe")
+			);
+
+			if (!hasTsyringe) return null;
+
+			return { code: REFLECT_POLYFILL + code, map: null };
 		},
 	};
 }

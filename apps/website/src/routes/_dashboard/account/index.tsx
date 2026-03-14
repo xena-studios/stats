@@ -22,23 +22,29 @@ import {
 import { Separator } from "@/components/ui/separator";
 
 export const Route = createFileRoute("/_dashboard/account/")({
-	component: RouteComponent,
 	server: {
 		middleware: [authRequiredMiddleware],
 	},
+	component: RouteComponent,
 });
+
+const QUICK_LINKS = [
+	{ hash: "email", label: "Email Settings", icon: Mail },
+	{ hash: "password", label: "Security Settings", icon: Shield },
+	{ hash: "devices", label: "Active Sessions", icon: Monitor },
+] as const;
+
+function formatJoinDate(date: Date | string | undefined) {
+	if (!date) return "Unknown";
+	return new Date(date).toLocaleDateString("en-US", {
+		month: "long",
+		year: "numeric",
+	});
+}
 
 function RouteComponent() {
 	const { data: session } = authClient.useSession();
 	const user = session?.user;
-
-	const formatJoinDate = (date: Date | string | undefined) => {
-		if (!date) return "Unknown";
-		return new Date(date).toLocaleDateString("en-US", {
-			month: "long",
-			year: "numeric",
-		});
-	};
 
 	return (
 		<div className="flex flex-1 flex-col gap-4 p-4 pt-0">
@@ -96,39 +102,20 @@ function RouteComponent() {
 							<CardTitle>Quick Links</CardTitle>
 						</CardHeader>
 						<CardContent className="space-y-2">
-							<Button
-								variant="ghost"
-								className="w-full justify-start gap-2"
-								asChild
-							>
-								<Link to="/account/settings" hash="email">
-									<Mail className="size-4" />
-									Email Settings
-									<ExternalLink className="ml-auto size-3" />
-								</Link>
-							</Button>
-							<Button
-								variant="ghost"
-								className="w-full justify-start gap-2"
-								asChild
-							>
-								<Link to="/account/settings" hash="password">
-									<Shield className="size-4" />
-									Security Settings
-									<ExternalLink className="ml-auto size-3" />
-								</Link>
-							</Button>
-							<Button
-								variant="ghost"
-								className="w-full justify-start gap-2"
-								asChild
-							>
-								<Link to="/account/settings" hash="devices">
-									<Monitor className="size-4" />
-									Active Sessions
-									<ExternalLink className="ml-auto size-3" />
-								</Link>
-							</Button>
+							{QUICK_LINKS.map(({ hash, label, icon: Icon }) => (
+								<Button
+									key={hash}
+									variant="ghost"
+									className="w-full justify-start gap-2"
+									asChild
+								>
+									<Link to="/account/settings" hash={hash}>
+										<Icon className="size-4" />
+										{label}
+										<ExternalLink className="ml-auto size-3" />
+									</Link>
+								</Button>
+							))}
 						</CardContent>
 					</Card>
 				</div>

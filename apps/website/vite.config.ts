@@ -1,12 +1,11 @@
 import { fileURLToPath, URL } from "node:url";
-
+import babel from "@rolldown/plugin-babel";
 import tailwindcss from "@tailwindcss/vite";
 import { devtools } from "@tanstack/devtools-vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
-import react from "@vitejs/plugin-react";
+import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
 import { reflectPolyfillPlugin } from "./src/lib/reflect-polyfills";
 
 const config = defineConfig({
@@ -15,12 +14,10 @@ const config = defineConfig({
 		nitro(),
 		tailwindcss(),
 		tanstackStart(),
-		tsconfigPaths(),
-		react({
-			babel: {
-				plugins: ["babel-plugin-react-compiler"],
-			},
-		}),
+		react(),
+		babel({
+			presets: [reactCompilerPreset()],
+		} as Parameters<typeof babel>[0]),
 		reflectPolyfillPlugin(),
 	],
 	resolve: {
@@ -30,6 +27,9 @@ const config = defineConfig({
 	},
 	server: {
 		port: 3000,
+	},
+	ssr: {
+		noExternal: ["tslib", /^@radix-ui\//, "radix-ui"],
 	},
 });
 

@@ -8,10 +8,10 @@ import { PasskeysCard } from "@/components/cards/account-settings/passkeys";
 import { SocialAccountsCard } from "@/components/cards/account-settings/social-accounts";
 
 export const Route = createFileRoute("/_dashboard/account/settings")({
-	component: RouteComponent,
 	server: {
 		middleware: [authRequiredMiddleware],
 	},
+	component: RouteComponent,
 });
 
 function RouteComponent() {

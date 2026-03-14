@@ -3,10 +3,17 @@ import { createMiddleware } from "@tanstack/react-start";
 import { getRequestHeaders } from "@tanstack/react-start/server";
 import { auth } from "@/auth";
 
+async function getSession() {
+	const headers = getRequestHeaders();
+	return auth.api.getSession({ headers });
+}
+
+/**
+ * Redirects unauthenticated users to the sign-in page.
+ */
 export const authRequiredMiddleware = createMiddleware().server(
 	async ({ next }) => {
-		const headers = getRequestHeaders();
-		const session = await auth.api.getSession({ headers });
+		const session = await getSession();
 		if (!session) {
 			throw redirect({ to: "/sign-in" });
 		}
@@ -15,10 +22,12 @@ export const authRequiredMiddleware = createMiddleware().server(
 	}
 );
 
+/**
+ * Redirects authenticated users to the root page.
+ */
 export const noAuthRequiredMiddleware = createMiddleware().server(
 	async ({ next }) => {
-		const headers = getRequestHeaders();
-		const session = await auth.api.getSession({ headers });
+		const session = await getSession();
 		if (session) {
 			throw redirect({ to: "/" });
 		}

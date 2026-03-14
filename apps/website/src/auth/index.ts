@@ -72,7 +72,7 @@ export const auth = betterAuth({
 					subject: "Xena Stats Change Email Confirmation",
 					react: ChangeEmailConfirmationEmail({
 						changeEmailConfirmationURL: url,
-						newEmail: newEmail,
+						newEmail,
 					}),
 				});
 			},

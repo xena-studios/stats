@@ -19,15 +19,15 @@ export function useCountUp({
 }: UseCountUpOptions) {
 	const [value, setValue] = useState(0);
 	const ref = useRef<HTMLElement>(null);
-	const hasStartedRef = useRef(false);
 	const frameRef = useRef<number>(0);
 
 	useEffect(() => {
 		const element = ref.current;
+		let started = false;
 
 		function runAnimation() {
-			if (hasStartedRef.current) return;
-			hasStartedRef.current = true;
+			if (started) return;
+			started = true;
 
 			const startTime = performance.now();
 
@@ -51,13 +51,15 @@ export function useCountUp({
 			frameRef.current = requestAnimationFrame(animate);
 		}
 
+		// Run immediately if we don't need to wait for visibility
 		if (!startOnView) {
 			runAnimation();
-			return;
+			return () => cancelAnimationFrame(frameRef.current);
 		}
 
 		if (!element) return;
 
+		// Start animation when the element scrolls into view
 		const observer = new IntersectionObserver(
 			(entries) => {
 				for (const entry of entries) {
@@ -74,7 +76,7 @@ export function useCountUp({
 
 		return () => {
 			observer.disconnect();
-			if (frameRef.current) cancelAnimationFrame(frameRef.current);
+			cancelAnimationFrame(frameRef.current);
 		};
 	}, [end, duration, decimals, startOnView]);
 

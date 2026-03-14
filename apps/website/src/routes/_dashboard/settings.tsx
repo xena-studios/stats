@@ -2,10 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { authRequiredMiddleware } from "@/auth/middleware";
 
 export const Route = createFileRoute("/_dashboard/settings")({
-	component: RouteComponent,
 	server: {
 		middleware: [authRequiredMiddleware],
 	},
+	component: RouteComponent,
 });
 
 function RouteComponent() {

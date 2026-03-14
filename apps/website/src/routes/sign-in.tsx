@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { ChartArea } from "lucide-react";
 import { noAuthRequiredMiddleware } from "@/auth/middleware";
 import { SignInCard } from "@/components/cards/sign-in";
@@ -24,8 +24,12 @@ function RouteComponent() {
 				<SignInCard />
 				<FieldDescription className="px-6 text-center">
 					By signing in, you agree to our{" "}
-					<Link to="/legal/terms-of-service">Terms of Service</Link> and{" "}
-					<Link to="/legal/privacy-policy">Privacy Policy</Link>.
+					<a href="https://help.xenastats.com/terms-of-service">
+						Terms of Service
+					</a>{" "}
+					and{" "}
+					<a href="https://help.xenastats.com/privacy-policy">Privacy Policy</a>
+					.
 				</FieldDescription>
 			</div>
 		</main>

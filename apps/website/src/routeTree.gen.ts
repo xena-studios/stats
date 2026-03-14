@@ -13,8 +13,6 @@ import { Route as SignInRouteImport } from './routes/sign-in'
 import { Route as DashboardRouteImport } from './routes/_dashboard'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as HomeIndexRouteImport } from './routes/home/index'
-import { Route as LegalTermsOfServiceRouteImport } from './routes/legal/terms-of-service'
-import { Route as LegalPrivacyPolicyRouteImport } from './routes/legal/privacy-policy'
 import { Route as DashboardSettingsRouteImport } from './routes/_dashboard/settings'
 import { Route as DashboardOverviewRouteImport } from './routes/_dashboard/overview'
 import { Route as DashboardAccountIndexRouteImport } from './routes/_dashboard/account/index'
@@ -38,16 +36,6 @@ const IndexRoute = IndexRouteImport.update({
 const HomeIndexRoute = HomeIndexRouteImport.update({
   id: '/home/',
   path: '/home/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LegalTermsOfServiceRoute = LegalTermsOfServiceRouteImport.update({
-  id: '/legal/terms-of-service',
-  path: '/legal/terms-of-service',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LegalPrivacyPolicyRoute = LegalPrivacyPolicyRouteImport.update({
-  id: '/legal/privacy-policy',
-  path: '/legal/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
@@ -82,8 +70,6 @@ export interface FileRoutesByFullPath {
   '/sign-in': typeof SignInRoute
   '/overview': typeof DashboardOverviewRoute
   '/settings': typeof DashboardSettingsRoute
-  '/legal/privacy-policy': typeof LegalPrivacyPolicyRoute
-  '/legal/terms-of-service': typeof LegalTermsOfServiceRoute
   '/home/': typeof HomeIndexRoute
   '/account/settings': typeof DashboardAccountSettingsRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
@@ -94,8 +80,6 @@ export interface FileRoutesByTo {
   '/sign-in': typeof SignInRoute
   '/overview': typeof DashboardOverviewRoute
   '/settings': typeof DashboardSettingsRoute
-  '/legal/privacy-policy': typeof LegalPrivacyPolicyRoute
-  '/legal/terms-of-service': typeof LegalTermsOfServiceRoute
   '/home': typeof HomeIndexRoute
   '/account/settings': typeof DashboardAccountSettingsRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
@@ -108,8 +92,6 @@ export interface FileRoutesById {
   '/sign-in': typeof SignInRoute
   '/_dashboard/overview': typeof DashboardOverviewRoute
   '/_dashboard/settings': typeof DashboardSettingsRoute
-  '/legal/privacy-policy': typeof LegalPrivacyPolicyRoute
-  '/legal/terms-of-service': typeof LegalTermsOfServiceRoute
   '/home/': typeof HomeIndexRoute
   '/_dashboard/account/settings': typeof DashboardAccountSettingsRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
@@ -122,8 +104,6 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/overview'
     | '/settings'
-    | '/legal/privacy-policy'
-    | '/legal/terms-of-service'
     | '/home/'
     | '/account/settings'
     | '/api/auth/$'
@@ -134,8 +114,6 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/overview'
     | '/settings'
-    | '/legal/privacy-policy'
-    | '/legal/terms-of-service'
     | '/home'
     | '/account/settings'
     | '/api/auth/$'
@@ -147,8 +125,6 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/_dashboard/overview'
     | '/_dashboard/settings'
-    | '/legal/privacy-policy'
-    | '/legal/terms-of-service'
     | '/home/'
     | '/_dashboard/account/settings'
     | '/api/auth/$'
@@ -159,8 +135,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DashboardRoute: typeof DashboardRouteWithChildren
   SignInRoute: typeof SignInRoute
-  LegalPrivacyPolicyRoute: typeof LegalPrivacyPolicyRoute
-  LegalTermsOfServiceRoute: typeof LegalTermsOfServiceRoute
   HomeIndexRoute: typeof HomeIndexRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
@@ -193,20 +167,6 @@ declare module '@tanstack/react-router' {
       path: '/home'
       fullPath: '/home/'
       preLoaderRoute: typeof HomeIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/legal/terms-of-service': {
-      id: '/legal/terms-of-service'
-      path: '/legal/terms-of-service'
-      fullPath: '/legal/terms-of-service'
-      preLoaderRoute: typeof LegalTermsOfServiceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/legal/privacy-policy': {
-      id: '/legal/privacy-policy'
-      path: '/legal/privacy-policy'
-      fullPath: '/legal/privacy-policy'
-      preLoaderRoute: typeof LegalPrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_dashboard/settings': {
@@ -269,8 +229,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardRoute: DashboardRouteWithChildren,
   SignInRoute: SignInRoute,
-  LegalPrivacyPolicyRoute: LegalPrivacyPolicyRoute,
-  LegalTermsOfServiceRoute: LegalTermsOfServiceRoute,
   HomeIndexRoute: HomeIndexRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }
