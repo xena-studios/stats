@@ -3,10 +3,6 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { betterAuth } from "better-auth/minimal";
 import { magicLink, organization } from "better-auth/plugins";
 import { tanstackStartCookies } from "better-auth/tanstack-start";
-import { ChangeEmailConfirmationEmail } from "@/components/emails/change-email-confirmation";
-import { DeleteAccountVerificationEmail } from "@/components/emails/delete-account-verification";
-import { EmailVerificationEmail } from "@/components/emails/email-verification";
-import { MagicLinkEmail } from "@/components/emails/magic-link";
 import { database } from "@/db";
 import { authSchema } from "@/db/schema";
 import { resend } from "@/email";
@@ -23,15 +19,17 @@ export const auth = betterAuth({
 	emailVerification: {
 		sendVerificationEmail: async ({ user, url }) => {
 			await resend.emails.send({
-				from: env.RESEND_FROM_EMAIL,
 				to: user.email,
-				subject: "Xena Stats Email Verification",
-				react: EmailVerificationEmail({ emailVerificationURL: url }),
+				template: {
+					id: "stats-email-verification",
+					variables: {
+						VERIFICATION_URL: url,
+					},
+				},
 			});
 		},
 		sendOnSignUp: true,
 		autoSignInAfterVerification: true,
-		expiresIn: 3600, // 1 hour
 	},
 	socialProviders: {
 		google: {
@@ -52,10 +50,13 @@ export const auth = betterAuth({
 		magicLink({
 			sendMagicLink: async ({ email, url }) => {
 				await resend.emails.send({
-					from: env.RESEND_FROM_EMAIL,
 					to: email,
-					subject: "Xena Stats Sign in Link",
-					react: MagicLinkEmail({ signInURL: url }),
+					template: {
+						id: "stats-magic-link",
+						variables: {
+							SIGN_IN_URL: url,
+						},
+					},
 				});
 			},
 		}),
@@ -67,13 +68,14 @@ export const auth = betterAuth({
 			enabled: true,
 			sendChangeEmailConfirmation: async ({ user, newEmail, url }) => {
 				await resend.emails.send({
-					from: env.RESEND_FROM_EMAIL,
 					to: user.email,
-					subject: "Xena Stats Change Email Confirmation",
-					react: ChangeEmailConfirmationEmail({
-						changeEmailConfirmationURL: url,
-						newEmail,
-					}),
+					template: {
+						id: "stats-change-email-confirmation",
+						variables: {
+							NEW_EMAIL: newEmail,
+							CONFIRMATION_URL: url,
+						},
+					},
 				});
 			},
 		},
@@ -81,12 +83,13 @@ export const auth = betterAuth({
 			enabled: true,
 			sendDeleteAccountVerification: async ({ user, url }) => {
 				await resend.emails.send({
-					from: env.RESEND_FROM_EMAIL,
 					to: user.email,
-					subject: "Xena Stats Delete Account Verification",
-					react: DeleteAccountVerificationEmail({
-						deleteAccountVerificationURL: url,
-					}),
+					template: {
+						id: "stats-delete-account-verification",
+						variables: {
+							DELETE_ACCOUNT_URL: url,
+						},
+					},
 				});
 			},
 		},
